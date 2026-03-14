@@ -1,9 +1,9 @@
 // RadarGas Blog — NocoDB Client
 // Fetches blog posts from NocoDB (headless CMS)
 
-const API_URL = process.env.NOCODB_API_URL!;
-const API_TOKEN = process.env.NOCODB_API_TOKEN!;
-const TABLE_ID = process.env.NOCODB_BLOG_TABLE_ID!;
+const API_URL = process.env.NOCODB_API_URL || '';
+const API_TOKEN = process.env.NOCODB_API_TOKEN || '';
+const TABLE_ID = process.env.NOCODB_BLOG_TABLE_ID || '';
 
 export interface BlogPost {
     Id: number;
@@ -18,6 +18,10 @@ export interface BlogPost {
 }
 
 async function nocoFetch(endpoint: string, options?: RequestInit) {
+    if (!API_URL || !API_TOKEN || !TABLE_ID) {
+        console.warn('[NocoDB] Missing env vars — returning empty data');
+        return { list: [] };
+    }
     const res = await fetch(`${API_URL}${endpoint}`, {
         ...options,
         headers: {
@@ -27,7 +31,8 @@ async function nocoFetch(endpoint: string, options?: RequestInit) {
         },
     });
     if (!res.ok) {
-        throw new Error(`NocoDB API error: ${res.status} ${res.statusText}`);
+        console.error(`NocoDB API error: ${res.status} ${res.statusText}`);
+        return { list: [] };
     }
     return res.json();
 }
