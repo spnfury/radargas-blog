@@ -739,31 +739,6 @@
         width: 100%;
         justify-content: center;
     }
-}/* ==========================================
-   RadarGas — Blog CSS
-   Premium dark theme for blog pages
-   Reuses rg-landing design tokens and components
-   ========================================== */
-
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
-
-/* Inherit landing variables (already defined in landing.css, re-declare for standalone use) */
-:root {
-    --rg-bg: #0A0E14;
-    --rg-bg-alt: #111827;
-    --rg-surface: rgba(255, 255, 255, 0.04);
-    --rg-surface-hover: rgba(255, 255, 255, 0.08);
-    --rg-border: rgba(255, 255, 255, 0.08);
-    --rg-primary: #00E676;
-    --rg-primary-dark: #00C853;
-    --rg-primary-glow: rgba(0, 230, 118, 0.15);
-    --rg-text: #F1F5F9;
-    --rg-text-secondary: rgba(255, 255, 255, 0.6);
-    --rg-text-muted: rgba(255, 255, 255, 0.35);
-    --rg-radius: 16px;
-    --rg-radius-sm: 12px;
-    --rg-font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    --rg-max-width: 1140px;
 }
 
 /* ---- Override body for blog (allow scrolling) ---- */
